@@ -23,7 +23,8 @@
   become: yes
 
   roles:
-     - jenkins
+     - role: jenkins
+     - role: common
 
 - name: Deploy Vault Server
   hosts: vault_server
@@ -31,6 +32,7 @@
   become: yes
 
   roles:
-    - vault
+    - role: vault
+    - role: common
 
 
