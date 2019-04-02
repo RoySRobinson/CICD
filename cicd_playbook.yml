@@ -1,0 +1,54 @@
+---
+
+- name: Deploy Rocket Chat Server
+  hosts: rocket_server
+  remote_user: vagrant
+  become: yes
+    
+  roles:
+    - rocketchat.server
+
+
+- name: Deploy Gitlab Server
+  hosts: gitlab_server
+  remote_user: vagrant
+  become: yes
+
+  roles:
+    - geerlingguy.gitlab
+
+- name: Deploy Jenkins CI Server
+  hosts: jenkins_server
+  remote_user: vagrant
+  become: yes
+
+  roles:
+     - role: geerlingguy.repo-epel
+     - role: geerlingguy.git
+     - role: tecris.maven
+     - role: geerlingguy.ansible
+     - role: geerlingguy.jenkins
+       vars:
+          jenkins_plugins: ['Amazon EC2 Container Service plugin with autoscaling capabilities',
+       'Amazon Elastic Container Service plugin',
+       'Ansible plugin',
+       'GitHub Authentication plugin',
+       'Hashicorp Vault Pipeline Plugin',
+       'Pipeline',
+       'RocketChat Notifier',
+       'SSH Slaves plugin',
+       'Terraform Plugin',
+       'VirtualBox Plugin']
+          state: present
+
+
+
+- name: Deploy Vault Server
+  hosts: vault_server
+  remote_user: vagrant
+  become: yes
+
+  roles:
+    - andrewrothstein.vault
+
+
