@@ -1,5 +1,4 @@
 ---
-
 - hosts: all
   strategy: free
   gather_facts: no
@@ -8,19 +7,21 @@
   tasks:
   - name: Running packages against All servers
     include_role:
-       name: packages
+      name: packages
     when: "'rocketchat_server:jenkin_server' in group_names"
   - name: Running rocketchat role on  All rocketchat  servers
     include_role:
-       name: rocketchat
+      name: rocketchat
     when: "'rocketchat_server' in group_names"
   - name: Running gitlab role on All gitlab servers
     include_role:
-       name: gitlab
+      name: gitlab
     when: "'gitlab_server' in group_names"
   - name: Running jenkins role on All Jenkins  servers
     include_role:
-       name: jenkins
+      name: jenkins
     when: "'jenkins_server' in group_names"
   - name: Running playbook against All vault  servers
     include_role:
+      name: vault
+    when: "'vault_serve' in group_names"
