@@ -4,21 +4,21 @@
   strategy: free
   gather_facts: no
   remote_user: vagrant
-  become: yes 
+  become: yes
   tasks:
   - name: Running playbook against All rocketchat  servers
-    include_role: 
+    include_role:
        name: rocketchat
-    when: "'rocketchat_server' in group_names"
+    when: rocketchat_server in group_names
   - name: Running playbook against All gitlab servers
-    include_role: 
+    include_role:
        name: gitlab
-    when: "'gitlab_server' in group_names"
-  - name: Running playbook against All Jenkins  servers 
-    include_role: 
+    when: gitlab_server in group_names
+  - name: Running playbook against All Jenkins  servers
+    include_role:
        name: jenkins
-    when: "'jenkins_server' in group_names"
-  - name: Running playbook against All vault  servers  
-    include_role: 
+    when: jenkins_server in group_names
+  - name: Running playbook against All vault  servers
+    include_role:
        name: vault
-    when: "'vault_server' in group_names"
+    when: vault_server in group_names
