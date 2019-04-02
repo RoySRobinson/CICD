@@ -1,7 +1,4 @@
 ---
-- name: Include OS-specific variables.
-  include_vars: "{{ ansible_os_family }}.yml"
-
 - name: Check if GitLab configuration file already exists.
   stat: path=/etc/gitlab/gitlab.rb
   register: gitlab_config_file
