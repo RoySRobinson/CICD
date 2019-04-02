@@ -6,7 +6,7 @@
   become: yes
     
   roles:
-    - rocketchat.server
+    - rocketchat
 
 
 - name: Deploy Gitlab Server
