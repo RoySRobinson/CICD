@@ -1,0 +1,11 @@
+---
+- name: Install common tools used by all servers 
+  yum: name={{ item }} state=installed
+  with_items:
+    - lsof
+    - tree
+    - unzip
+    - telnet
+    - man-pages
+    - epel-release
+    - vim-enhanced
