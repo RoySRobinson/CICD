@@ -1,0 +1,6 @@
+---
+# tasks/main.yml: Main tasks for RocketChat.Ansible
+
+  - name: Installing RocketChat Server to all rocket servers
+    become_method: sudo
+    command: snap install rocketchat-server
