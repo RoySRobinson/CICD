@@ -15,7 +15,7 @@
   become: yes
 
   roles:
-    - geerlingguy.gitlab
+    - gitlab
 
 - name: Deploy Jenkins CI Server
   hosts: jenkins_server
@@ -23,25 +23,7 @@
   become: yes
 
   roles:
-     - role: geerlingguy.repo-epel
-     - role: geerlingguy.git
-     - role: tecris.maven
-     - role: geerlingguy.ansible
-     - role: geerlingguy.jenkins
-       vars:
-          jenkins_plugins: ['Amazon EC2 Container Service plugin with autoscaling capabilities',
-       'Amazon Elastic Container Service plugin',
-       'Ansible plugin',
-       'GitHub Authentication plugin',
-       'Hashicorp Vault Pipeline Plugin',
-       'Pipeline',
-       'RocketChat Notifier',
-       'SSH Slaves plugin',
-       'Terraform Plugin',
-       'VirtualBox Plugin']
-          state: present
-
-
+     - jenkins
 
 - name: Deploy Vault Server
   hosts: vault_server
@@ -49,6 +31,6 @@
   become: yes
 
   roles:
-    - andrewrothstein.vault
+    - vault
 
 
