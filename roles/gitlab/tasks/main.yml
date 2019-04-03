@@ -2,9 +2,9 @@
 - name: Install GitLab dependencies
   package: name={{ item }} state=present
   with_items:
-    - openssh-server
+    - curl 
     - postfix
-    - curl
+    - openssh-server
     - policycoreutils-python
     - openssh-clients
 
