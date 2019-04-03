@@ -9,3 +9,4 @@
     - man-pages
     - epel-release
     - vim-enhanced
+    - git
