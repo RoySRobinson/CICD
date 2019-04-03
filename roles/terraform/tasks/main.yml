@@ -1,0 +1,11 @@
+---
+- name: Yum Install Packages
+  yum: name={{item}} state=present
+  with_items:
+   - wget
+
+- name: Terraform install
+  unarchive:
+   src: https://releases.hashicorp.com/terraform/0.11.11/terraform_0.11.11_linux_amd64.zip
+   dest: /usr/bin
+   remote_src: True 
