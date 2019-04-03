@@ -8,7 +8,7 @@
   - name: Running packages against All servers
     include_role:
       name: packages
-    when: "'rocketchat_server:jenkin_server' in group_names"
+    when: "'jenkins_server' in group_names"
   - name: Running rocketchat role on  All rocketchat  servers
     include_role:
       name: rocketchat
@@ -24,8 +24,20 @@
       name: terraform
     include_role:
       name: chef
+    include_role:
+      name: common
     when: "'jenkins_server' in group_names"
   - name: Running playbook against All vault  servers
     include_role:
       name: vault
-    when: "'vault_serve' in group_names"
+    when: "'vault_server' in group_names"
+  - name: Running jenkins role on JenkinsCI  servers
+    include_role:
+      name: jenkins
+    include_role:
+      name: terraform
+    include_role:
+      name: chef
+    include_role:
+      name: common
+    when: "'jenkinsCI' in group_names"
