@@ -25,7 +25,7 @@
     include_role:
       name: chef
     include_role:
-      name: common
+      name: packages
     when: "'jenkins_server' in group_names"
   - name: Running playbook against All vault  servers
     include_role:
@@ -39,5 +39,5 @@
     include_role:
       name: chef
     include_role:
-      name: common
+      name: packages
     when: "'jenkinsCI' in group_names"
