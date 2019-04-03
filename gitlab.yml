@@ -1,0 +1,11 @@
+---
+- hosts: all
+  strategy: free
+  gather_facts: no
+  remote_user: vagrant
+  become: yes
+  tasks:
+  - name: Running gitlab role on All gitlab servers
+    include_role:
+      name: gitlab
+    when: "'gitlab_server' in group_names"
