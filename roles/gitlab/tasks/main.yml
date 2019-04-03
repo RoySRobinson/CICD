@@ -9,7 +9,7 @@
     - openssh-clients
 
 - name: Add the  GitLab package repository
-  shell: curl https://packages.gitlab.com/install/repositiories/gitlab/gitlab-ee/script.rpm.sh | sudo bash sudo bash warn=false
+  shell: curl https://packages.gitlab.com/install/repositories/gitlab/gitlab-ee/script.rpm.sh | sudo bash
 
 - name: Install GitLab
   yum:
