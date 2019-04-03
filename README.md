@@ -14,7 +14,6 @@ Your local machine must have git, ansible and vagrant installed. Use vagrant to 
 1.  Clone Repo into your local environment - git clone https://github.com/RoySRobinson/cicd_project
 2.  Vagrant up
 3.  From ansible node, i.e. your local machin - Share ssh keys with other servers. use ssh-keygen, then ssh-copy-id to server-IP-Address
-4.  Install role requirements into role folder from [ansible galaxy](https://galaxy.ansible.com/) using the following command. sudo ansible-galaxy install -p roles/ -r roles/requirements.yml
-5.  Run ansible to provision local environment servers with following command. ansible-playbook -i inventory cicd_playbook.yml
-6.  Use jenkins server for CI/CD Orchestration
-7.  Log into newly provisioned jenkins server from host machine in favorite broswer at  https://192.168.33.102:8080
+4.  Run ansible to provision local environment servers with following command. ansible-playbook -i inventory cicd_playbook.yml
+5.  Use jenkins server for CI/CD Orchestration
+6.  Log into newly provisioned jenkins server from host machine in favorite broswer at  https://192.168.33.102:8080
