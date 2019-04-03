@@ -20,7 +20,9 @@
   - name: Running jenkins role on All Jenkins  servers
     include_role:
       name: jenkins
+    include_role:
       name: terraform
+    include_role:
       name: chef
     when: "'jenkins_server' in group_names"
   - name: Running playbook against All vault  servers
