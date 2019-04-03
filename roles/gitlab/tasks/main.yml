@@ -5,7 +5,8 @@
     - openssh-server
     - postfix
     - curl
-    - policycoreutils-python    
+    - policycoreutils-python
+    - openssh-clients
 
 - name: Add the  GitLab package repository
   shell: curl https://packages.gitlab.com/install/repositiories/gitlab/gitlab-ee/script.rpm.sh | sudo bash
