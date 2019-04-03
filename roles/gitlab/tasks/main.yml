@@ -1,16 +1,16 @@
-- name: Add GitLab repo to list of accessible repositories
-  shell: curl https://packages.gitlab.com/install/repositories/gitlab/gitlab-ee/script.rpm.sh | sudo bash warn=false
+--- 
+- name: Install GitLab dependencies
+  package: name={{ item }} state=present
+  with_items:
+    - openssh-server
+    - postfix
+    - curl
+    - policycoreutils-python    
 
-#- name: Set EXTERNAL_URL environment variable in .bashrc
-#  lineinfile:
-#    line: "export EXTERNAL_URL={{external_url}}"
-#    path: /root/.bashrc
-#    regexp: "export EXTERNAL_URL={{external_url}}"
-#    state: present
-
-#- name: Source the .basrc file
-#  shell: source /root/.bashrc
+- name: Add the  GitLab package repository
+  shell: curl https://packages.gitlab.com/install/repositiories/gitlab/gitlab-ee/script.rpm.sh | sudo bash
 
 - name: Install GitLab
-  action: yum name="gitlab-ee" state=installed
-  notify: Start GitLab Service
+  yum:
+   name: gitlab-ee
+   state: present
