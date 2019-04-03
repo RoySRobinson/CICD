@@ -11,14 +11,14 @@
 - name: Add the  GitLab package repository
   shell: curl https://packages.gitlab.com/install/repositories/gitlab/gitlab-ee/script.rpm.sh | sudo bash
 
+- name: Changing URL to https://192.168.33.103/
+  shell: EXTERNAL_URL="https://192.168.33.103/"
+
 - name: Install GitLab
   yum:
    name: gitlab-ee
    state: present
-   
-- name: Changing URL to https://192.168.33.103/
-  shell: EXTERNAL_URL="https://192.168.33.103/"
-  
+     
 - name: Restart GitLab with sudo gitlab-ctl reconfigure
-  shell: sudo gitlab-ctl reconfigure
+  shell: sudo gitlab-ctl restart
 
