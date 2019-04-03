@@ -27,10 +27,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 	    g.cpus = 2
       g.customize ["modifyvm", :id, "--vram", "16"]
     end
-  gitlab.vm.provision "MyGitlab", type: "ansible" do |a|
-    a.playbook = "ansible/gitlab.yml"
-    #a.tags = "execute"
-  end
+  #gitlab.vm.provision "MyGitlab", type: "ansible" do |a|
+   # a.playbook = "ansible/gitlab.yml"
+ # end
 
   end
   config.vm.define "vault" do |vault|
@@ -52,16 +51,25 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 	    r.memory = 2048
     end
   end
-  config.vm.define "app-server" do |app|
+  config.vm.define "stage-server" do |app|
 	  app.vm.hostname = "production-app-server"
     app.vm.network :private_network, ip: "192.168.33.106"
 	  app.vm.provider :virtualbox do |r|
 	    r.name = "prod-app-server"
 	    r.memory = 1024 
     end
-    app.vm.provision "MyAppServer", type: "ansible" do |a|
-      a.playbook = "ansible/common.yml"
-      #a.tags = "execute"
+   #app.vm.provision "MyAppServer", type: "ansible" do |a|
+    #  a.playbook = "ansible/common.yml"
+  #  end
+   config.vm.define "production-server" do |app|
+	 app.vm.hostname = "production-app-server"
+    app.vm.network :private_network, ip: "192.168.33.107"
+	  app.vm.provider :virtualbox do |r|
+	    r.name = "prod-app-server"
+	    r.memory = 1024 
     end
+   # app.vm.provision "ProdAppServer", type: "ansible" do |a|
+   #   a.playbook = "ansible/common.yml"
+   # end
   end
 end
