@@ -15,3 +15,7 @@
   yum:
    name: gitlab-ee
    state: present
+   
+- name: Changing URL to https://192.168.33.103/
+  shell: sudo EXTERNAL_URL="https://192.168.33.103/"
+
